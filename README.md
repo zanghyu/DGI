@@ -1,6 +1,6 @@
 
 # DGI
-Add data preprocessing script in this project. 
+Add data preprocessing script in this code. 
 
 Deep Graph Infomax (Veličković *et al.*, ICLR 2019): [https://arxiv.org/abs/1809.10341](https://arxiv.org/abs/1809.10341)
 
