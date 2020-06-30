@@ -19,7 +19,7 @@ In `data` folder, we move the data used in DGI to `cora_dgi` folder, and add the
 
 The preprocessing can be done through `python preprocess.py`, and the format which DGI used can be made.
 
-** The script can make the original cora data to the formatted data used in plantoid, but these data still are not totally equal to the data used in DGI, so there still need some work to do, maybe normalizing etc.
+** The script can make the original cora data to the formatted data used in plantoid, but these data still are not totally equal to the data used in DGI, so there still need some work to do, maybe normalizing etc. **
 
 ## Reference
 If you make advantage of DGI in your research, please cite the following in your manuscript:
