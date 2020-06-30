@@ -102,19 +102,28 @@ def sample_mask(idx, l):
     mask[idx] = 1
     return np.array(mask, dtype=np.bool)
 
-def load_data(dataset_str): # {'pubmed', 'citeseer', 'cora'}
+def load_data(dataset_str, use_dgi_data=False): # {'pubmed', 'citeseer', 'cora'}
     """Load data."""
+    
     names = ['x', 'y', 'tx', 'ty', 'allx', 'ally', 'graph']
     objects = []
     for i in range(len(names)):
-        with open("data/ind.{}.{}".format(dataset_str, names[i]), 'rb') as f:
+        if use_dgi_data:
+            filename = "data/cora_dgi/ind.{}.{}".format(dataset_str, names[i])
+        else:
+            filename = "data/cora_ori/ind.{}.{}".format(dataset_str, names[i])
+        with open(filename, 'rb') as f:
             if sys.version_info > (3, 0):
                 objects.append(pkl.load(f, encoding='latin1'))
             else:
                 objects.append(pkl.load(f))
 
     x, y, tx, ty, allx, ally, graph = tuple(objects)
-    test_idx_reorder = parse_index_file("data/ind.{}.test.index".format(dataset_str))
+    if use_dgi_data: 
+        index_file_name = "data/cora_dgi/ind.{}.test.index".format(dataset_str)
+    else:
+        index_file_name = "data/cora_ori/ind.{}.test.index".format(dataset_str)
+    test_idx_reorder = parse_index_file(index_file_name)
     test_idx_range = np.sort(test_idx_reorder)
 
     if dataset_str == 'citeseer':
@@ -140,6 +149,7 @@ def load_data(dataset_str): # {'pubmed', 'citeseer', 'cora'}
     idx_val = range(len(y), len(y)+500)
 
     return adj, features, labels, idx_train, idx_val, idx_test
+
 
 def sparse_to_tuple(sparse_mx, insert_batch=False):
     """Convert sparse matrix to tuple representation."""

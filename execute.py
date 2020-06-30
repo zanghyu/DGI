@@ -19,7 +19,7 @@ hid_units = 512
 sparse = True
 nonlinearity = 'prelu' # special name to separate parameters
 
-adj, features, labels, idx_train, idx_val, idx_test = process.load_data(dataset)
+adj, features, labels, idx_train, idx_val, idx_test = process.load_data(dataset, use_dgi_data=False)
 features, _ = process.preprocess_features(features)
 
 nb_nodes = features.shape[0]

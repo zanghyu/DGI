@@ -1,3 +1,4 @@
+
 # DGI
 Deep Graph Infomax (Veličković *et al.*, ICLR 2019): [https://arxiv.org/abs/1809.10341](https://arxiv.org/abs/1809.10341)
 
@@ -11,6 +12,14 @@ Here we provide an implementation of Deep Graph Infomax (DGI) in PyTorch, along 
 - `utils/` contains the necessary processing subroutines (`process.py`).
 
 Finally, `execute.py` puts all of the above together and may be used to execute a full training run on Cora.
+
+## Modified part
+This project add `preprocess.py`, this file include preprocessing works of the `cora` dataset.
+In `data` folder, we move the data used in DGI to `cora_dgi` folder, and add the original cora dataset into the folder named `cora_ori`. Besides, we also put the dataset used in plantoid in `cora_nonorm` folder.
+
+The preprocessing can be done through `python preprocess.py`, and the format which DGI used can be made.
+
+** The script can make the original cora data to the formatted data used in plantoid, but these data still are not totally equal to the data used in DGI, so there still need some work to do, maybe normalizing etc.
 
 ## Reference
 If you make advantage of DGI in your research, please cite the following in your manuscript:
